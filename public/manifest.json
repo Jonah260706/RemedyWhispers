@@ -1,0 +1,72 @@
+{
+    "name": "RemedyWhisper - Natural Health Guide",
+    "short_name": "RemedyWhisper",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f7f4ed",
+    "theme_color": "#538256",
+    "description": "Your comprehensive guide to natural remedies and symptom checking",
+    "icons": [
+        {
+            "src": "assets/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Check Symptoms",
+            "short_name": "Symptoms",
+            "description": "Analyze your symptoms",
+            "url": "/symptom-checker",
+            "icons": [
+                {
+                    "src": "assets/icons/symptom-512x512.png",
+                    "sizes": "512x512"
+                }
+            ]
+        },
+        {
+            "name": "Browse Remedies",
+            "short_name": "Remedies",
+            "description": "View natural remedies",
+            "url": "/remedies",
+            "icons": [
+                {
+                    "src": "assets/icons/remedies-512x512.png",
+                    "sizes": "512x512"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/screenshots/home.png",
+            "sizes": "1080x1920",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/screenshots/symptom-checker.png",
+            "sizes": "1080x1920",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/screenshots/remedies.png",
+            "sizes": "1080x1920",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "portrait",
+    "categories": [
+        "health",
+        "medical",
+        "education"
+    ]
+}

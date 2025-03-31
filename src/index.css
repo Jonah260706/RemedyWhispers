@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 36% 75%;
+    --foreground: 229 14% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 229 14% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 229 14% 20%;
+
+    --primary: 40 89% 67%;
+    --primary-foreground: 229 14% 20%;
+
+    --secondary: 140 26% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 42 20% 92%;
+    --muted-foreground: 229 10% 45%;
+
+    --accent: 356 39% 59%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 4 81% 57%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 44 20% 88%;
+    --input: 44 20% 88%;
+    --ring: 151 26% 52%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-sandstone text-charcoal font-sans overflow-x-hidden antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-medium tracking-tight;
+  }
+
+  /* Custom scrollbar for a premium feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-charcoal/10 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-charcoal/20;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/50 shadow-glass;
+  }
+
+  .premium-card {
+    @apply bg-gradient-to-b from-white to-sandstone/60 shadow-card rounded-2xl border border-sandstone-dark/10 p-5;
+  }
+
+  .heading-badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-saffron text-amber-800;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .page-container {
+    @apply container max-w-5xl mx-auto px-4 py-6 sm:px-6 sm:py-8;
+  }
+
+  .section-title {
+    @apply text-2xl font-serif font-semibold tracking-tight mb-4 text-charcoal;
+  }
+
+  .section-subtitle {
+    @apply text-base text-charcoal-light mb-6;
+  }
+
+  .btn-primary {
+    @apply bg-saffron hover:bg-saffron-dark text-charcoal/80 font-bold text-2xl rounded-lg px-4 py-2.5 transition-all duration-200 shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-ayurveda hover:bg-ayurveda-dark text-white font-medium rounded-lg px-4 py-2.5 transition-all duration-200 shadow-sm;
+  }
+
+  .btn-outline {
+    @apply border border-charcoal/20 hover:border-charcoal/40 text-charcoal text-2xl font-medium rounded-lg px-4 py-2.5 transition-all duration-200;
+  }
+
+  .disclaimer {
+    @apply text-sm text-charcoal-light italic mt-2;
+  }
+
+  .emergency-text {
+    @apply text-pomegranate font-medium;
+  }
+
+  /* Mobile navigation */
+  .mobile-nav {
+    @apply fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-md rounded-full px-6 py-3 shadow-elevation border border-sandstone-dark/10 w-[90%] max-w-md z-50;
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center justify-center space-y-1 text-charcoal-light transition-all duration-200 hover:text-charcoal;
+  }
+
+  .nav-item.active {
+    @apply text-ayurveda;
+  }
+
+  /* Card transitions and animations */
+  .card-transition {
+    @apply transition-all duration-300 ease-in-out hover:shadow-elevation hover:-translate-y-1;
+  }
+}
