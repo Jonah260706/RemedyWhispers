@@ -51,7 +51,7 @@ export const remedies: RemedyDetail[] = [
     ingredients: ["Fresh ginger root", "Hot water", "Honey (optional)", "Lemon (optional)"],
     prepTime: "10 minutes",
     effectiveness: 5,
-    imageUrl: "https://images.unsplash.com/photo-1603567043148-0b5240ba7ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://tse4.mm.bing.net/th?id=OIP.Rorpna6Pcrwa7JKKfxraoAHaE6&pid=Api&P=0&h=180",
     description: "A warm and spicy tea that helps relieve nausea, motion sickness, and digestive discomfort. Ginger contains natural compounds that help calm the stomach and reduce inflammation.",
     instructions: [
       "Peel and thinly slice 1-2 inches of fresh ginger root",
@@ -85,7 +85,7 @@ export const remedies: RemedyDetail[] = [
     ingredients: ["Turmeric powder", "Milk or plant-based milk", "Black pepper", "Honey", "Cinnamon (optional)"],
     prepTime: "10 minutes",
     effectiveness: 4,
-    imageUrl: "https://images.unsplash.com/photo-1615485500704-8e990f9a84ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://tse4.mm.bing.net/th?id=OIP.9gk_zSpZZ2JZJQI7gd3EcwHaE8&pid=Api&P=0&h=180",
     description: "Also known as 'golden milk,' this ancient Ayurvedic remedy helps reduce inflammation, boost immunity, and improve digestion. Curcumin in turmeric has powerful anti-inflammatory properties.",
     instructions: [
       "Warm 1 cup of milk in a saucepan over medium heat",
@@ -120,7 +120,7 @@ export const remedies: RemedyDetail[] = [
     ingredients: ["Peppermint leaves (fresh or dried)", "Hot water", "Honey (optional)"],
     prepTime: "5 minutes",
     effectiveness: 4,
-    imageUrl: "https://images.unsplash.com/photo-1565887756948-7a3e36d5e155?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://tse1.mm.bing.net/th?id=OIP.EsdkvMOQL1e-QBgl-cDS4QHaE_&pid=Api&P=0&h=180",
     description: "A refreshing and soothing tea that helps relieve digestive issues including bloating, gas, and indigestion. Peppermint relaxes digestive tract muscles and improves bile flow.",
     instructions: [
       "Boil 1 cup of water",
@@ -154,7 +154,7 @@ export const remedies: RemedyDetail[] = [
     ingredients: ["Apple cider vinegar", "Water", "Honey", "Lemon juice (optional)"],
     prepTime: "2 minutes",
     effectiveness: 3,
-    imageUrl: "https://images.unsplash.com/photo-1595165305017-0a8ed676fee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://tse1.mm.bing.net/th?id=OIP.mrLujedUWxRxbA56A5bB2QHaE8&pid=Api&P=0&h=180",
     description: "A tart and invigorating tonic that may help with digestion, blood sugar control, and weight management. The acetic acid in apple cider vinegar has various health benefits.",
     instructions: [
       "Mix 1-2 tablespoons of apple cider vinegar in 8 oz of water",
@@ -187,7 +187,7 @@ export const remedies: RemedyDetail[] = [
     ingredients: ["Eucalyptus essential oil", "Hot water", "Towel"],
     prepTime: "5 minutes",
     effectiveness: 4,
-    imageUrl: "https://images.unsplash.com/photo-1584556812952-905ffd0c611a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://tse2.mm.bing.net/th?id=OIP.oZsPHw6tHq6kpgnJLA4vEQHaE6&pid=Api&P=0&h=180",
     description: "A clearing and refreshing steam treatment that helps relieve nasal and chest congestion. Eucalyptus contains compounds that help open airways and reduce mucus.",
     instructions: [
       "Boil 2-3 cups of water",

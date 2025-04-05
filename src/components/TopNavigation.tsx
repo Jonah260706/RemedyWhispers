@@ -144,7 +144,7 @@ const TopNavigation = () => {
                 to={item.to}
                 className={({ isActive }) =>
                   `flex items-center px-3 py-1.5 rounded-lg transition-colors duration-200 ${isActive
-                    ? 'text-secondary/2 font-xl font-semibold bg-secondary'
+                    ? 'text-secondary*5 font-xl font-semibold bg-secondary/50'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`
                 }

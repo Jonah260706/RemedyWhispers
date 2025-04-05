@@ -46,10 +46,10 @@ const AIAssistant = () => {
     }
     
     // Check for common symptoms and provide relevant responses
-    if (lowercaseInput.includes("headache")) {
+    if (lowercaseInput.includes("headache") || lowercaseInput.includes("migraine") || lowercaseInput.includes("fever")) {
       return {
         role: "assistant",
-        content: "For headaches, you could try:\n\n• Drinking plenty of water to stay hydrated\n• Applying a cold compress to your forehead\n• Resting in a dark, quiet room\n• Taking ginger tea to reduce inflammation\n\nHow long have you been experiencing the headache?"
+        content: "For headaches, migraines or fever, you could try:\n\n• Drinking plenty of water to stay hydrated\n• Applying a cold compress to your forehead\n• Resting in a dark, quiet room\n• Taking ginger tea to reduce inflammation\n\nHow long have you been experiencing the headache?"
       };
     } else if (lowercaseInput.includes("sore throat") || lowercaseInput.includes("throat pain")) {
       return {

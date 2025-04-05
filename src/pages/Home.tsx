@@ -21,7 +21,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { useIsMobile } from "@/hooks/use-mobile";
-import ChatBot from "@/components/ChatBot";
+import ChatBot from "@/components/AIAssistant";
 import DidYouKnow from "@/components/DidYouKnow";
 import SeasonalTips from "@/components/SeasonalTips";
 

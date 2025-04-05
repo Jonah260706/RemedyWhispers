@@ -1,4 +1,4 @@
-import { AchievementKey } from "./hooks/useHealthProfile";
+import { AchievementKey } from "../hooks/useHealthProfile";
 import { CheckSquare, Heart, Star, ClipboardCheck, Download, Leaf, LucideIcon } from "lucide-react";
 
 export interface AchievementDefinition {
