@@ -156,7 +156,7 @@ const SymptomChecker = () => {
                 Your symptoms may indicate a serious medical condition that requires immediate professional care. Please contact emergency services or go to the nearest emergency room.
               </p>
               <p className="text-sm font-medium">
-                Call emergency services (911) if you experience:
+                Call emergency services (100) if you experience:
               </p>
               <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                 <li>Difficulty breathing or shortness of breath</li>
@@ -367,9 +367,9 @@ const SymptomChecker = () => {
               <MessageCircle className="h-6 w-6" />
             </button>
           </DrawerTrigger>
-          <DrawerContent className="h-[80vh]">
+          <DrawerContent className="h-[90vh]">
             <DrawerHeader>
-              <DrawerTitle>Chat with our Health Assistant</DrawerTitle>
+              <DrawerTitle className="text-xl">Chat with our Health Assistant</DrawerTitle>
             </DrawerHeader>
             <div className="px-4 pb-8 h-full overflow-hidden">
               <ChatBot />
@@ -385,11 +385,11 @@ const SymptomChecker = () => {
           >
             <MessageCircle className="h-6 w-6" />
           </button>
-          <DialogContent className="max-w-md max-h-[70vh] overflow-hidden">
+          <DialogContent className="max-w-5xl max-h-[90vh] w-[90vw] overflow-hidden">
             <DialogHeader>
-              <DialogTitle>Chat with our Health Assistant</DialogTitle>
+              <DialogTitle className="text-2xl">Chat with our Health Assistant</DialogTitle>
             </DialogHeader>
-            <div className="overflow-hidden h-full max-h-[calc(70vh-80px)]">
+            <div className="overflow-hidden h-full max-h-[calc(90vh-80px)]">
               <ChatBot />
             </div>
           </DialogContent>

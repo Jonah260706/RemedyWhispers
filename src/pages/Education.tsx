@@ -2,12 +2,19 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight, BookOpen, FileText,
   Video, Microscope, ExternalLink, Award,
-  Download, Wifi, WifiOff
+  Download, Wifi, WifiOff, MessageCircle
 } from "lucide-react";
 import ChatBot from "@/components/AIAssistant";
 import DownloadableGuide from "../components/DownloadableGuide";
+import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 
 const Education = () => {
+  const [chatOpen, setChatOpen] = useState(false);
+  const isMobile = useIsMobile();
+
   // Sample articles data (in a real app, this would come from a database or API)
   const articles = [
     {
@@ -263,7 +270,7 @@ const Education = () => {
         </div>
       </section>
 
-      
+
       <section className="animate-slide-up animate-delay-300">
         <div className="premium-card text-center">
           <h2 className="text-2xl font-serif font-semibold mb-4">
@@ -282,8 +289,46 @@ const Education = () => {
           </div>
         </div>
       </section>
+
+      {isMobile ? (
+        <Drawer open={chatOpen} onOpenChange={setChatOpen}>
+          <DrawerTrigger asChild>
+            <button
+              className="fixed bottom-6 right-6 z-50 bg-ayurveda text-white p-3 rounded-full shadow-elevation hover:bg-ayurveda-dark transition-colors"
+              aria-label="Open chat assistant"
+            >
+              <MessageCircle className="h-6 w-6" />
+            </button>
+          </DrawerTrigger>
+          <DrawerContent className="h-[90vh]">
+            <DrawerHeader>
+              <DrawerTitle className="text-xl">Chat with our Health Assistant</DrawerTitle>
+            </DrawerHeader>
+            <div className="px-4 pb-8 h-full overflow-hidden">
+              <ChatBot />
+            </div>
+          </DrawerContent>
+        </Drawer>
+      ) : (
+        <Dialog open={chatOpen} onOpenChange={setChatOpen}>
+          <button
+            onClick={() => setChatOpen(true)}
+            className="fixed bottom-6 right-6 z-50 bg-ayurveda text-white p-3 rounded-full shadow-elevation hover:bg-ayurveda-dark transition-colors"
+            aria-label="Open chat assistant"
+          >
+            <MessageCircle className="h-6 w-6" />
+          </button>
+          <DialogContent className="max-w-5xl max-h-[90vh] w-[90vw] overflow-hidden">
+            <DialogHeader>
+              <DialogTitle className="text-2xl">Chat with our Health Assistant</DialogTitle>
+            </DialogHeader>
+            <div className="overflow-hidden h-full max-h-[calc(90vh-80px)]">
+              <ChatBot />
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
-    
   );
 };
 

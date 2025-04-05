@@ -103,8 +103,8 @@ const RemedyDetail = () => {
                   <Star
                     key={i}
                     className={`h-4 w-4 ${i < remedy.effectiveness
-                        ? "text-saffron fill-saffron"
-                        : "text-charcoal-light"
+                      ? "text-saffron fill-saffron"
+                      : "text-charcoal-light"
                       }`}
                   />
                 ))}
@@ -211,9 +211,9 @@ const RemedyDetail = () => {
               <MessageCircle className="h-6 w-6" />
             </button>
           </DrawerTrigger>
-          <DrawerContent className="h-[80vh]">
+          <DrawerContent className="h-[90vh]">
             <DrawerHeader>
-              <DrawerTitle>Chat with our Health Assistant</DrawerTitle>
+              <DrawerTitle className="text-xl">Chat with our Health Assistant</DrawerTitle>
             </DrawerHeader>
             <div className="px-4 pb-8 h-full overflow-hidden">
               <ChatBot />
@@ -229,11 +229,11 @@ const RemedyDetail = () => {
           >
             <MessageCircle className="h-6 w-6" />
           </button>
-          <DialogContent className="max-w-md max-h-[70vh] overflow-hidden">
+          <DialogContent className="max-w-5xl max-h-[90vh] w-[90vw] overflow-hidden">
             <DialogHeader>
-              <DialogTitle>Chat with our Health Assistant</DialogTitle>
+              <DialogTitle className="text-2xl">Chat with our Health Assistant</DialogTitle>
             </DialogHeader>
-            <div className="overflow-hidden h-full max-h-[calc(70vh-80px)]">
+            <div className="overflow-hidden h-full max-h-[calc(90vh-80px)]">
               <ChatBot />
             </div>
           </DialogContent>
