@@ -13,22 +13,13 @@ Important rules:
 
 export async function getAIResponse(messages: { role: string; content: string }[]) {
     try {
-        const response = await fetch(OPENROUTER_API_URL, {
+        const response = await fetch('/.netlify/functions/openrouter', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-                'HTTP-Referer': window.location.origin,
-                'X-Title': 'Remedy Whisper'
             },
             body: JSON.stringify({
-                model: "google/gemini-pro",
-                messages: [
-                    { role: "system", content: SYSTEM_PROMPT },
-                    ...messages
-                ],
-                temperature: 0.7,
-                max_tokens: 1000
+                messages
             })
         });
 
