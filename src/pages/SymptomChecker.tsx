@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SymptomInput from "../components/SymptomInput";
+import ChatBot from "@/components/AIAssistant";
 import { AlertTriangle, ArrowRight, AlertCircle, Stethoscope, Shield, Save, MessageCircle } from "lucide-react";
 import { checkSymptoms, checkForEmergencySymptoms } from "../utils/symptomChecker";
 import { useHealthProfile, SymptomHistory } from "../hooks/useHealthProfile";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { DetailedSymptom } from "../types/symptoms";
 
 const SymptomChecker = () => {
@@ -13,7 +16,9 @@ const SymptomChecker = () => {
   const [isEmergency, setIsEmergency] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showSaveDialog, setShowSaveDialog] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
   const [notes, setNotes] = useState("");
+  const isMobile = useIsMobile();
   const { healthProfile, addSymptomRecord } = useHealthProfile();
 
   const handleSymptomsChange = (newSymptoms: DetailedSymptom[]) => {
@@ -89,7 +94,7 @@ const SymptomChecker = () => {
   };
 
   return (
-    <div className="page-container">
+    <div className="page-container relative pb-20">
       <header className="text-center mb-8 animate-fade-in">
         <span className="heading-badge mb-3">Health Tool</span>
         <h1 className="text-3xl md:text-4xl font-serif font-semibold mb-3 text-charcoal">
@@ -350,6 +355,46 @@ const SymptomChecker = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Floating chat button (visible only on desktop) */}
+      {isMobile ? (
+        <Drawer open={chatOpen} onOpenChange={setChatOpen}>
+          <DrawerTrigger asChild>
+            <button
+              className="fixed bottom-6 right-6 z-50 bg-ayurveda text-white p-3 rounded-full shadow-elevation hover:bg-ayurveda-dark transition-colors"
+              aria-label="Open chat assistant"
+            >
+              <MessageCircle className="h-6 w-6" />
+            </button>
+          </DrawerTrigger>
+          <DrawerContent className="h-[80vh]">
+            <DrawerHeader>
+              <DrawerTitle>Chat with our Health Assistant</DrawerTitle>
+            </DrawerHeader>
+            <div className="px-4 pb-8 h-full overflow-hidden">
+              <ChatBot />
+            </div>
+          </DrawerContent>
+        </Drawer>
+      ) : (
+        <Dialog open={chatOpen} onOpenChange={setChatOpen}>
+          <button
+            onClick={() => setChatOpen(true)}
+            className="fixed bottom-6 right-6 z-50 bg-ayurveda text-white p-3 rounded-full shadow-elevation hover:bg-ayurveda-dark transition-colors"
+            aria-label="Open chat assistant"
+          >
+            <MessageCircle className="h-6 w-6" />
+          </button>
+          <DialogContent className="max-w-md max-h-[70vh] overflow-hidden">
+            <DialogHeader>
+              <DialogTitle>Chat with our Health Assistant</DialogTitle>
+            </DialogHeader>
+            <div className="overflow-hidden h-full max-h-[calc(70vh-80px)]">
+              <ChatBot />
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };

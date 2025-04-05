@@ -4,6 +4,7 @@ import {
   Video, Microscope, ExternalLink, Award,
   Download, Wifi, WifiOff
 } from "lucide-react";
+import ChatBot from "@/components/AIAssistant";
 import DownloadableGuide from "../components/DownloadableGuide";
 
 const Education = () => {
@@ -31,7 +32,7 @@ const Education = () => {
       category: "Myth Busting",
       excerpt: "Separating fact from fiction when it comes to treating seasonal illnesses at home.",
       readTime: "6 min read",
-      imageUrl: "https://images.unsplash.com/photo-1626736903650-3ff7c56c5562?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "https://tse2.mm.bing.net/th?id=OIP.muxpiAMJ60IuLV0m0HjSfwHaD4&pid=Api&P=0&h=180",
     },
     {
       id: "4",
@@ -39,7 +40,7 @@ const Education = () => {
       category: "Practical Guide",
       excerpt: "Essential ingredients to keep on hand for common ailments and how to store them properly.",
       readTime: "7 min read",
-      imageUrl: "https://images.unsplash.com/photo-1552033931-d249575566c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "https://tse1.mm.bing.net/th?id=OIP.2T9nJTiYq0SZHBA2SMpSfAHaHa&pid=Api&P=0&h=180",
     },
     {
       id: "5",
@@ -65,18 +66,18 @@ const Education = () => {
       id: "guide-1",
       title: "Complete Cold & Flu Remedy Guide",
       description: "A comprehensive guide to treating cold and flu symptoms with natural remedies, including recipes and instructions.",
-      fileSize: "4.2 MB",
-      imageUrl: "https://images.unsplash.com/photo-1636632520659-254c6232d88d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      fileUrl: "/assets/guides/cold-flu-remedies.pdf",
+      fileSize: "13 6kb",
+      imageUrl: "src/downloads/cold&flu.jpg",
+      fileUrl: "src/downloads/coldandflu.pdf",
       category: "Seasonal Health"
     },
     {
       id: "guide-2",
       title: "Natural First Aid Kit",
       description: "Learn how to create and use a natural first aid kit with common household ingredients for minor injuries and ailments.",
-      fileSize: "3.8 MB",
-      imageUrl: "https://images.unsplash.com/photo-1595854341625-f33e09b8e566?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      fileUrl: "/assets/guides/natural-first-aid.pdf",
+      fileSize: "764 kb",
+      imageUrl: "https://tse4.mm.bing.net/th?id=OIP._IPZvz_VHXC1f5g_61W60wAAAA&pid=Api&P=0&h=180",
+      fileUrl: "src/downloads/First-Aid-Kit-Contents-Full-With-COVID.pdf",
       category: "Emergency Preparedness"
     },
     {
@@ -84,8 +85,8 @@ const Education = () => {
       title: "Herbal Remedies for Sleep & Stress",
       description: "Detailed guide on herbs and natural remedies to improve sleep quality and reduce stress and anxiety.",
       fileSize: "5.1 MB",
-      imageUrl: "https://images.unsplash.com/photo-1567306295427-94503f8300d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      fileUrl: "/assets/guides/sleep-stress-remedies.pdf",
+      imageUrl: "https://tse4.mm.bing.net/th?id=OIP.--SyiKIPVeIMFkLvhuYiEAHaJh&pid=Api&P=0&h=180",
+      fileUrl: "src/downloads/EmanPublisher_3_5654ahi-21207811.pdf",
       category: "Mental Wellness"
     }
   ];
@@ -262,45 +263,7 @@ const Education = () => {
         </div>
       </section>
 
-      <section className="mb-12 animate-slide-up animate-delay-300">
-        <h2 className="section-title">Expert Contributors</h2>
-        <div className="premium-card">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/3 flex justify-center mb-6 md:mb-0">
-              <div className="relative">
-                <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-card">
-                  <img
-                    src="https://images.unsplash.com/photo-1551601651-bc60f254d532?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
-                    alt="Dr. Sarah Chen"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-2 -right-2 bg-saffron rounded-full p-2">
-                  <Award className="h-5 w-5 text-white" />
-                </div>
-              </div>
-            </div>
-            <div className="md:w-2/3 md:pl-8">
-              <h3 className="text-xl font-serif font-medium mb-1 text-center md:text-left">
-                Dr. Sarah Chen
-              </h3>
-              <p className="text-ayurveda font-medium text-sm mb-4 text-center md:text-left">
-                Integrative Medicine Specialist, PhD in Pharmacognosy
-              </p>
-              <p className="text-charcoal-light mb-4">
-                Dr. Chen specializes in integrating traditional healing practices with modern medicine. With over 15 years of experience researching medicinal plants, she ensures all remedies are both effective and safe.
-              </p>
-              <a
-                href="#"
-                className="text-ayurveda hover:text-ayurveda-dark font-medium inline-flex items-center"
-              >
-                View Dr. Chen's Articles <ExternalLink className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       <section className="animate-slide-up animate-delay-300">
         <div className="premium-card text-center">
           <h2 className="text-2xl font-serif font-semibold mb-4">
@@ -320,6 +283,7 @@ const Education = () => {
         </div>
       </section>
     </div>
+    
   );
 };
 

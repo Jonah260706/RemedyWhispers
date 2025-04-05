@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   User, Star, Heart, Bell, History,
   Bookmark, Settings, AlertCircle, PlusCircle,
-  Clipboard, X, Leaf, Award
+  Clipboard, X, Leaf, Award, MessageCircle
 } from "lucide-react";
 import { remedies } from "../data/remedies";
 import RemedyCard from "../components/RemedyCard";
@@ -11,6 +11,10 @@ import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { achievementsList, getAchievementDefinition } from "../data/achievements";
 import AchievementBadge from "../components/AchievementBadge";
+import ChatBot from "@/components/AIAssistant";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -36,6 +40,8 @@ const Profile = () => {
     days: [],
     isActive: true
   });
+  const [chatOpen, setChatOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   // In a real app, favorites/recent would be fetched based on user ID
   const favoriteRemedies = remedies.filter(r => healthProfile.profile.preferences.includes(r.id));
@@ -113,7 +119,7 @@ const Profile = () => {
     .filter(Boolean); // Filter out undefined in case a key doesn't match
 
   return (
-    <div className="page-container">
+    <div className="page-container relative pb-20">
       <header className="text-center mb-8 animate-fade-in">
         <span className="heading-badge mb-3">Your Account</span>
         <h1 className="text-3xl md:text-4xl font-serif font-semibold mb-3 text-charcoal">
@@ -694,6 +700,46 @@ const Profile = () => {
           </div>
         )}
       </div>
+
+      {/* Floating chat button (visible only on desktop) */}
+      {isMobile ? (
+        <Drawer open={chatOpen} onOpenChange={setChatOpen}>
+          <DrawerTrigger asChild>
+            <button
+              className="fixed bottom-6 right-6 z-50 bg-ayurveda text-white p-3 rounded-full shadow-elevation hover:bg-ayurveda-dark transition-colors"
+              aria-label="Open chat assistant"
+            >
+              <MessageCircle className="h-6 w-6" />
+            </button>
+          </DrawerTrigger>
+          <DrawerContent className="h-[80vh]">
+            <DrawerHeader>
+              <DrawerTitle>Chat with our Health Assistant</DrawerTitle>
+            </DrawerHeader>
+            <div className="px-4 pb-8 h-full overflow-hidden">
+              <ChatBot />
+            </div>
+          </DrawerContent>
+        </Drawer>
+      ) : (
+        <Dialog open={chatOpen} onOpenChange={setChatOpen}>
+          <button
+            onClick={() => setChatOpen(true)}
+            className="fixed bottom-6 right-6 z-50 bg-ayurveda text-white p-3 rounded-full shadow-elevation hover:bg-ayurveda-dark transition-colors"
+            aria-label="Open chat assistant"
+          >
+            <MessageCircle className="h-6 w-6" />
+          </button>
+          <DialogContent className="max-w-md max-h-[70vh] overflow-hidden">
+            <DialogHeader>
+              <DialogTitle>Chat with our Health Assistant</DialogTitle>
+            </DialogHeader>
+            <div className="overflow-hidden h-full max-h-[calc(70vh-80px)]">
+              <ChatBot />
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };

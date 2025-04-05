@@ -1,10 +1,15 @@
-
 import { useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
-import { Home, Search } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Home, Search, MessageCircle } from "lucide-react";
+import ChatBot from "@/components/AIAssistant";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const NotFound = () => {
   const location = useLocation();
+  const [chatOpen, setChatOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     console.error(
@@ -14,7 +19,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-sandstone p-4">
+    <div className="min-h-screen flex items-center justify-center bg-sandstone p-4 relative">
       <div className="premium-card text-center max-w-md w-full animate-fade-in">
         <div className="mb-8">
           <div className="relative">
@@ -26,14 +31,14 @@ const NotFound = () => {
             </div>
           </div>
         </div>
-        
+
         <h1 className="text-2xl font-serif font-semibold mb-3">
           Page Not Found
         </h1>
         <p className="text-charcoal-light mb-8">
           The page you're looking for doesn't exist or has been moved.
         </p>
-        
+
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/" className="btn-primary inline-flex items-center justify-center">
             <Home className="mr-2 h-4 w-4" />
@@ -44,6 +49,46 @@ const NotFound = () => {
           </Link>
         </div>
       </div>
+
+      {/* Floating chat button (visible only on desktop) */}
+      {isMobile ? (
+        <Drawer open={chatOpen} onOpenChange={setChatOpen}>
+          <DrawerTrigger asChild>
+            <button
+              className="fixed bottom-6 right-6 z-50 bg-ayurveda text-white p-3 rounded-full shadow-elevation hover:bg-ayurveda-dark transition-colors"
+              aria-label="Open chat assistant"
+            >
+              <MessageCircle className="h-6 w-6" />
+            </button>
+          </DrawerTrigger>
+          <DrawerContent className="h-[80vh]">
+            <DrawerHeader>
+              <DrawerTitle>Chat with our Health Assistant</DrawerTitle>
+            </DrawerHeader>
+            <div className="px-4 pb-8 h-full overflow-hidden">
+              <ChatBot />
+            </div>
+          </DrawerContent>
+        </Drawer>
+      ) : (
+        <Dialog open={chatOpen} onOpenChange={setChatOpen}>
+          <button
+            onClick={() => setChatOpen(true)}
+            className="fixed bottom-6 right-6 z-50 bg-ayurveda text-white p-3 rounded-full shadow-elevation hover:bg-ayurveda-dark transition-colors"
+            aria-label="Open chat assistant"
+          >
+            <MessageCircle className="h-6 w-6" />
+          </button>
+          <DialogContent className="max-w-md max-h-[70vh] overflow-hidden">
+            <DialogHeader>
+              <DialogTitle>Chat with our Health Assistant</DialogTitle>
+            </DialogHeader>
+            <div className="overflow-hidden h-full max-h-[calc(70vh-80px)]">
+              <ChatBot />
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };
