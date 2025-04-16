@@ -3,7 +3,7 @@ const OPENROUTER_API_URL = import.meta.env.VITE_OPENROUTER_API_URL || "https://o
 
 const SYSTEM_PROMPT = `You are a health assistant that provides information about natural remedies and general health advice. 
 Important rules:
-- Always provide disclaimers for medical advice
+- Always provide disclaimers for medical advice at the end of responding to the user's questions.
 - Recommend seeking professional medical help for serious conditions
 - Focus on evidence-based natural remedies
 - Be clear about the limitations of natural treatments
@@ -11,47 +11,56 @@ Important rules:
 - Format your responses with clear sections and bullet points when appropriate
 - Be empathetic and supportive in your responses`;
 
-export async function getAIResponse(messages) {
+export async function getAIResponse(messages: { role: string; content: string }[]) {
     try {
-      // Make sure we have the API key
-      const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
-      if (!apiKey) {
-        console.error("API key is missing");
-        throw new Error("API key is missing from environment variables");
-      }
-  
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${apiKey}`,
-          "HTTP-Referer": window.location.origin, // Required by OpenRouter
-          "X-Title": "Health Assistant" // Optional but good practice
-        },
-        body: JSON.stringify({
-          messages: [
-            // Add system prompt to ensure health assistant behavior
-            {
-              role: "system",
-              content: "You are a health assistant that provides information about natural remedies and general health advice. Always provide disclaimers for medical advice. Recommend seeking professional medical help for serious conditions. Focus on evidence-based natural remedies. Be clear about the limitations of natural treatments. Format your responses with clear sections and bullet points when appropriate. Be empathetic and supportive in your responses."
+        // Log the request for debugging
+        console.log('Sending request to OpenRouter:', {
+            url: OPENROUTER_API_URL,
+            messages: messages,
+        });
+        
+        const response = await fetch(OPENROUTER_API_URL, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                "HTTP-Referer": window.location.origin,
+                "X-Title": "Remedy Whispers"
             },
-            // Include user conversation history
-            ...messages
-          ],
-          model: "google/gemini-2.5-pro-exp-03-25:free", // or your preferred model
-          max_tokens: 1000
-        }),
-      });
-  
-      if (!response.ok) {
-        console.error(`API error: ${response.status}`);
-        throw new Error(`API request failed with status ${response.status}`);
-      }
-  
-      const data = await response.json();
-      return data.choices[0].message.content;
+            body: JSON.stringify({
+                model: "google/gemini-pro", // Use a standard model name
+                messages: messages,
+                
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('API error response:', errorText);
+            throw new Error(`API request failed with status ${response.status}: ${errorText}`);
+        }
+
+        const data = await response.json();
+        
+        // Handle different response formats
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+            return data.choices[0].message.content;
+        } else if (data.content) {
+            // Direct content field
+            return data.content;
+        } else if (data.message && data.message.content) {
+            // Message wrapper format
+            return data.message.content;
+        } else if (data.text) {
+            // Simple text format
+            return data.text;
+        } else {
+            console.error('Unexpected API response format:', data);
+            throw new Error('Received unexpected response format from API');
+        }
     } catch (error) {
-      console.error("Error getting AI response:", error);
-      throw error;
+        console.error('Error getting AI response:', error);
+        throw error;
     }
-  }
+}
+

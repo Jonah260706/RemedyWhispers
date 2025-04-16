@@ -40,7 +40,7 @@ const AIAssistant = () => {
     if (checkForEmergency(inputValue)) {
       const emergencyMessage: Message = {
         role: "assistant",
-        content: "This sounds like a medical emergency. Please call emergency services (911) immediately or go to the nearest emergency room.",
+        content: "This sounds like a medical emergency. Please call emergency services (106) immediately or go to the nearest emergency room.",
         isEmergency: true
       };
       setMessages(prev => [...prev, { role: "user", content: inputValue }, emergencyMessage]);
@@ -59,11 +59,15 @@ const AIAssistant = () => {
     setIsProcessing(true);
 
     try {
-      // Format messages for API
-      const apiMessages = messages.map(msg => ({
-        role: msg.role,
-        content: msg.content
-      }));
+      // Format messages for API - include previous messages AND the new user message
+      const apiMessages = [
+        ...messages.map(msg => ({
+          role: msg.role,
+          content: msg.content
+        })),
+        // Add the current user message
+        { role: "user", content: inputValue }
+      ];
 
       // Get AI response
       const response = await getAIResponse(apiMessages);
